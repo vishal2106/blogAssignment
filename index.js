@@ -18,7 +18,7 @@ mongoose.connect(`${server}`, {
 }).catch(err => {
     console.log('Failed to connect to MongoDB', err);
 });
-console.log(path.join(__dirname, 'public'))
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs')
