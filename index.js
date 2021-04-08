@@ -4,6 +4,7 @@ const Blog = require('./models/blog')
 const blogRouter = require('./routes/blogs')
 const methodOverride = require('method-override')
 const app = express();
+const path = require('path');
 
 const server = 'mongodb+srv://ssd-root:blog1234@blog.g3gqa.mongodb.net/Blog?retryWrites=true&w=majority';       
 
@@ -17,7 +18,8 @@ mongoose.connect(`${server}`, {
 }).catch(err => {
     console.log('Failed to connect to MongoDB', err);
 });
-
+console.log(path.join(__dirname, 'public'))
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
